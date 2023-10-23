@@ -1,0 +1,23 @@
+<form [formGroup]="searchForm">
+  <div class="flex justify-content-center mt-5">
+    <div class="grid">
+      <div class="col">
+        <span class="p-float-label">
+          <input pInputText id="username" formControlName="username" />
+          <label htmlFor="username">Username</label>
+        </span>
+      </div>
+      <div class="col">
+        <span class="p-float-label">
+          <input pInputText id="password" formControlName="password" />
+          <label htmlFor="password">password</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</form>
+  
+<div class="flex justify-content-center gap-2">
+  <button pButton pRipple label="Submit" class="p-button-success" (click)="onSearch()"></button>
+  <button pButton pRipple label="Submit" class="p-button-warning"></button>
+</div>
