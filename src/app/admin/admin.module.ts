@@ -30,6 +30,8 @@ import { SearchTableComponent } from './components/search-table/search-table.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PaginatorModule } from 'primeng/paginator';
+import { AdminService } from './services/admin.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -66,7 +68,9 @@ import { PaginatorModule } from 'primeng/paginator';
     InputNumberModule,
     PaginatorModule,
     InputSwitchModule,
-    MultiSelectModule
-  ]
+    MultiSelectModule,
+    HttpClientModule 
+  ],
+  providers: [AdminService]
 })
 export class AdminModule { }

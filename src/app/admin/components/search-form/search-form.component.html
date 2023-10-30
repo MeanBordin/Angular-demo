@@ -1,16 +1,22 @@
 <form [formGroup]="searchForm">
   <div class="flex justify-content-center mt-5">
     <div class="grid">
-      <div class="col">
+      <div class="col-12 mb-3">
         <span class="p-float-label">
-          <input pInputText id="username" formControlName="username" />
-          <label htmlFor="username">Username</label>
+          <input pInputText id="Productname" formControlName="Productname"/>
+          <label htmlFor="Productname">Productname</label>
         </span>
       </div>
-      <div class="col">
+      <div class="col-6 mb-3">
         <span class="p-float-label">
-          <input pInputText id="password" formControlName="password" />
-          <label htmlFor="password">password</label>
+          <input pInputText id="Created" formControlName="Created"/>
+          <label htmlFor="Created">Created</label>
+        </span>
+      </div>
+      <div class="col-6 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="Updated" formControlName="Updated"/>
+          <label htmlFor="Updated">Updated</label>
         </span>
       </div>
     </div>
@@ -19,5 +25,5 @@
   
 <div class="flex justify-content-center gap-2">
   <button pButton pRipple label="Submit" class="p-button-success" (click)="onSearch()"></button>
-  <button pButton pRipple label="Submit" class="p-button-warning"></button>
+  <button pButton pRipple label="Clear" class="p-button-warning"></button>
 </div>
