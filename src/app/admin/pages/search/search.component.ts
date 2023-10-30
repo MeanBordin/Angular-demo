@@ -63,6 +63,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch() {
-    // const payload = this.searchForm.getRawValue()
+    const payload = this.searchForm.getRawValue()
+    console.log(payload);
   }
 }
