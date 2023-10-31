@@ -36,11 +36,6 @@ export class SearchComponent implements OnInit {
       })
     })
 
-    this.service.testApiFree().subscribe(res => {
-      this.test = res.results[0]
-      console.log(this.test['picture']['thumbnail']);
-    })
-
   }
 
   ngOnInit(): void {
