@@ -9,7 +9,11 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  testGetAll() : Observable<any> {
+  testGetAll(): Observable<any> {
     return this.http.get<any[]>('http://localhost:8080/api/products')
+  }
+
+  testApiFree(): Observable<any> {
+    return this.http.get<any>('https://randomuser.me/api/')
   }
 }

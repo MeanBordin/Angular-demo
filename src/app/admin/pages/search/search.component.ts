@@ -22,6 +22,8 @@ export class SearchComponent implements OnInit {
   updateAt: any
   createAt: any
 
+  test: any
+
   constructor(private fb: FormBuilder, private service: AdminService) {
     this.service.testGetAll().subscribe(res => {
       this.products = res
@@ -32,6 +34,11 @@ export class SearchComponent implements OnInit {
         item.createdAt = newCreatedAt
         item.updatedAt = newUpdatedAt
       })
+    })
+
+    this.service.testApiFree().subscribe(res => {
+      this.test = res.results[0]
+      console.log(this.test['picture']['thumbnail']);
     })
 
   }
