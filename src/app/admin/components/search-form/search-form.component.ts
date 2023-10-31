@@ -10,8 +10,13 @@ export class SearchFormComponent {
   @Input() searchForm!: FormGroup
 
   @Output() onSearchEvent = new EventEmitter();
+  @Output() onClearFormEvent = new EventEmitter();
 
   onSearch(){
     this.onSearchEvent.emit();
+  }
+
+  onClear() {
+    this.onClearFormEvent.emit();
   }
 }

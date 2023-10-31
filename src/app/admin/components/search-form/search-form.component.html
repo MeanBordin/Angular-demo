@@ -3,20 +3,20 @@
     <div class="grid">
       <div class="col-12 mb-3">
         <span class="p-float-label">
-          <input pInputText id="Productname" formControlName="Productname"/>
-          <label htmlFor="Productname">Productname</label>
+          <input pInputText id="productname" formControlName="productname"/>
+          <label htmlFor="productname">Productname</label>
         </span>
       </div>
       <div class="col-6 mb-3">
         <span class="p-float-label">
-          <input pInputText id="Created" formControlName="Created"/>
-          <label htmlFor="Created">Created</label>
+          <input pInputText id="created" formControlName="created"/>
+          <label htmlFor="created">Created</label>
         </span>
       </div>
       <div class="col-6 mb-3">
         <span class="p-float-label">
-          <input pInputText id="Updated" formControlName="Updated"/>
-          <label htmlFor="Updated">Updated</label>
+          <input pInputText id="updated" formControlName="updated"/>
+          <label htmlFor="updated">Updated</label>
         </span>
       </div>
     </div>
@@ -25,5 +25,5 @@
   
 <div class="flex justify-content-center gap-2">
   <button pButton pRipple label="Submit" class="p-button-success" (click)="onSearch()"></button>
-  <button pButton pRipple label="Clear" class="p-button-warning"></button>
+  <button pButton pRipple label="Clear" class="p-button-warning" (click)="onClear()"></button>
 </div>

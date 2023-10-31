@@ -42,8 +42,9 @@ export class SearchComponent implements OnInit {
 
   inintForm() {
     this.searchForm = this.fb.group({
-      username: [null],
-      password: [null]
+      productname: [null],
+      created: [null],
+      updated: [null]
     });
   }
 
@@ -65,5 +66,9 @@ export class SearchComponent implements OnInit {
   onSearch() {
     const payload = this.searchForm.getRawValue()
     console.log(payload);
+  }
+
+  onClear() {
+    this.searchForm.reset()
   }
 }
