@@ -19,21 +19,15 @@ export class SearchComponent implements OnInit {
   month: any
   year: any
   newDate: any
-  updateAt: any
-  createAt: any
+  updateAt: any[] = []
+  createAt: any[] = []
 
   test: any
 
   constructor(private fb: FormBuilder, private service: AdminService) {
-    this.service.testGetAll().subscribe(res => {
-      this.products = res
+    this.service.getProducts().subscribe(res => {
+      this.products = res      
       this.getItemDate()
-      const newCreatedAt = this.newFormatDate(this.createAt)
-      const newUpdatedAt = this.newFormatDate(this.updateAt)
-      this.products.forEach((item) => {
-        item.createdAt = newCreatedAt
-        item.updatedAt = newUpdatedAt
-      })
     })
 
   }
@@ -51,10 +45,10 @@ export class SearchComponent implements OnInit {
   }
 
   getItemDate() {
-    this.products.forEach((item: any) => {
-      this.updateAt = item.createdAt
-      this.createAt = item.updatedAt
-    })
+    this.products.forEach((item) => {
+      item.createdAt = this.newFormatDate(item.createdAt);
+      item.updatedAt = this.newFormatDate(item.updatedAt);
+    });
   }
 
   newFormatDate(oldDate: any) {

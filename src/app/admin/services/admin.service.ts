@@ -9,8 +9,8 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  testGetAll(): Observable<any> {
-    return this.http.get<any[]>('http://localhost:8080/api/products')
+  getProducts(): Observable<any> {
+    return this.http.get<any[]>('http://localhost:8080/getProducts')
   }
 
 }
