@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SortEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-search-table',
@@ -7,7 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchTableComponent {
   @Input() products!: any[];
-  @Input() cols!:  Column[];
+  @Input() cols!: Column[];
+
 }
 
 interface Column {

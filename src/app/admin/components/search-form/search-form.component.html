@@ -1,4 +1,4 @@
-<form [formGroup]="searchForm">
+<form [formGroup]="searchForm" enctype="multipart/form-data">
   <div class="flex justify-content-center mt-5">
     <div class="grid">
       <div class="col-12 mb-3">
@@ -21,7 +21,7 @@
       </div>
       <div class="col-12 mb-3">
         <span class="p-float-label">
-          <input type="file" id="image" formControlName="image"/>
+          <input type="file" id="image"  accept=".png, .jpg, .jpeg" formControlName="image"/>
         </span>
       </div>
     </div>

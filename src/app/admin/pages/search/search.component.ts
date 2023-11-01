@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TABLE_SEARCH } from '../../constants/table-option';
 import { AdminService } from '../../services/admin.service';
-import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -26,7 +25,7 @@ export class SearchComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: AdminService) {
     this.service.getProducts().subscribe((res: any) => {
       this.products = res.map((item: any) => {
-        item.image = "http://localhost:8080/images/" + item.image;
+        item.image = this.service.getProductImage(item.image);
         return item;
       });   
       this.getItemDate();
