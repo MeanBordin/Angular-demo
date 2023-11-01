@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TABLE_SEARCH } from '../../constants/table-option';
 import { AdminService } from '../../services/admin.service';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -22,14 +23,15 @@ export class SearchComponent implements OnInit {
   updateAt: any[] = []
   createAt: any[] = []
 
-  test: any
-
   constructor(private fb: FormBuilder, private service: AdminService) {
-    this.service.getProducts().subscribe(res => {
-      this.products = res      
-      this.getItemDate()
-    })
-
+    this.service.getProducts().subscribe((res: any) => {
+      this.products = res.map((item: any) => {
+        item.image = "http://localhost:8080/images/" + item.image;
+        return item;
+      });   
+      this.getItemDate();
+    }
+    )
   }
 
   ngOnInit(): void {
@@ -38,9 +40,10 @@ export class SearchComponent implements OnInit {
 
   inintForm() {
     this.searchForm = this.fb.group({
-      productname: [null],
-      created: [null],
-      updated: [null]
+      name: [null],
+      stock: [null],
+      price: [null],
+      image: [null]
     });
   }
 

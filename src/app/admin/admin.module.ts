@@ -69,7 +69,7 @@ import { HttpClientModule } from '@angular/common/http';
     PaginatorModule,
     InputSwitchModule,
     MultiSelectModule,
-    HttpClientModule 
+    HttpClientModule,
   ],
   providers: [AdminService]
 })
