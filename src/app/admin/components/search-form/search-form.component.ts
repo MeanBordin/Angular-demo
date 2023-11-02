@@ -11,6 +11,7 @@ export class SearchFormComponent {
 
   @Output() onSearchEvent = new EventEmitter();
   @Output() onClearFormEvent = new EventEmitter();
+  @Output() onClearFileSeleteEvent = new EventEmitter();
 
   onSearch(){
     this.onSearchEvent.emit();
@@ -18,5 +19,9 @@ export class SearchFormComponent {
 
   onClear() {
     this.onClearFormEvent.emit();
+  }
+
+  onClearFileSelect() {
+    this.onClearFileSeleteEvent.emit()
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SortEvent } from 'primeng/api';
 
 @Component({
@@ -10,6 +10,11 @@ export class SearchTableComponent {
   @Input() products!: any[];
   @Input() cols!: Column[];
 
+  @Output() deleteInRowEvent = new EventEmitter();
+
+  onDeleteInRow() {
+    this.deleteInRowEvent.emit();
+  }
 }
 
 interface Column {

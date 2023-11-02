@@ -10,6 +10,20 @@ input[type="file"]::file-selector-button {
 }
 
 input[type="file"]::file-selector-button:hover {
-    background-color: #66baff;
-    color: white;
+  background-color: #66baff;
+  color: white;
+}
+
+.btn-clear-file {
+  border-radius: 6px;
+  border: none;
+  padding: 8px;
+  width: 50px;
+  margin: 5px 5px 0 5px;
+  background: rgb(255, 177, 177);
+}
+
+
+.btn-clear-file:hover {
+  background: rgb(255, 114, 114);
 }

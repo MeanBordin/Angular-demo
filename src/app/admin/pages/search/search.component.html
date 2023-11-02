@@ -2,5 +2,10 @@
   [searchForm]="searchForm"
   (onSearchEvent)="onSearch()"
   (onClearFormEvent)="onClear()"
+  (onClearFileSeleteEvent)="onClearFileSelect()"
 ></app-search-form>
-<app-search-table [cols]="cols" [products]="products"></app-search-table>
+<app-search-table
+  [cols]="cols"
+  [products]="products"
+  (deleteInRowEvent)="onDeleteInRow()"
+></app-search-table>

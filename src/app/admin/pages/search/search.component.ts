@@ -23,18 +23,21 @@ export class SearchComponent implements OnInit {
   createAt: any[] = []
 
   constructor(private fb: FormBuilder, private service: AdminService) {
+    this.inintForm();
+  }
+
+  ngOnInit(): void {
+   this.getQueryTable()
+  }
+
+  getQueryTable() {
     this.service.getProducts().subscribe((res: any) => {
       this.products = res.map((item: any) => {
         item.image = this.service.getProductImage(item.image);
         return item;
-      });   
+      });
       this.getItemDate();
-    }
-    )
-  }
-
-  ngOnInit(): void {
-    this.inintForm();
+    })
   }
 
   inintForm() {
@@ -68,5 +71,13 @@ export class SearchComponent implements OnInit {
 
   onClear() {
     this.searchForm.reset()
+  }
+
+  onClearFileSelect() {
+    this.searchForm.get('image')?.reset();
+  }
+
+  onDeleteInRow() {
+  
   }
 }
