@@ -12,8 +12,8 @@ export class SearchTableComponent {
 
   @Output() deleteInRowEvent = new EventEmitter();
 
-  onDeleteInRow(event: any) {
-    this.deleteInRowEvent.emit(event);
+  onDeleteInRow(id: any) {
+    this.deleteInRowEvent.emit(id);
   }
 }
 
