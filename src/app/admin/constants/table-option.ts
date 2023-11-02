@@ -1,6 +1,6 @@
 export const TABLE_SEARCH = [
     { field: 'option', header: '' },
-    { field: 'id', header: 'Id' },
+    { field: 'id', header: 'No.' },
     { field: 'image', header: 'Image' },
     { field: 'name', header: 'Productname' },
     { field: 'price', header: 'Price' },

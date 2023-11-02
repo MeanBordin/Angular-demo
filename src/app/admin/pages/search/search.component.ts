@@ -77,7 +77,9 @@ export class SearchComponent implements OnInit {
     this.searchForm.get('image')?.reset();
   }
 
-  onDeleteInRow() {
-  
+  onDeleteInRow(event: any) {
+    this.service.deleteProduct(event).subscribe(() => {
+      this.getQueryTable()
+    })
   }
 }

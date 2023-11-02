@@ -16,6 +16,11 @@ export class AdminService {
   }
 
 
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.baseUrl}deleteProductPms/${id}`)
+  }
+
+  // return image path
   getProductImage(image: string): string {
     if (image) {
       return `${environment.baseUrl}images/${image}`
