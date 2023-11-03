@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TABLE_SEARCH } from '../../constants/table-option';
 import { AdminService } from '../../services/admin.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-search',
@@ -27,7 +28,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.getQueryTable()
+    this.getQueryTable()
   }
 
   getQueryTable() {
@@ -64,7 +65,7 @@ export class SearchComponent implements OnInit {
     return day + '/' + month + '/' + year;
   }
 
-  onSearch() {
+  onSave() {
     const payload = this.searchForm.getRawValue()
     console.log(payload);
   }

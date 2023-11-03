@@ -9,12 +9,12 @@ import { FormGroup } from '@angular/forms';
 export class SearchFormComponent {
   @Input() searchForm!: FormGroup
 
-  @Output() onSearchEvent = new EventEmitter();
+  @Output() onSaveEvent = new EventEmitter();
   @Output() onClearFormEvent = new EventEmitter();
   @Output() onClearFileSeleteEvent = new EventEmitter();
 
-  onSearch(){
-    this.onSearchEvent.emit();
+  onSave(){
+    this.onSaveEvent.emit();
   }
 
   onClear() {
