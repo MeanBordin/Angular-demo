@@ -18,11 +18,13 @@ export class SearchFormComponent {
   @Output() onSeleteFileEvent = new EventEmitter();
 
   onSave(){
-    this.onSaveEvent.emit();
+    this.imagePreview = null
+    this.onSaveEvent.emit(this.imagePreview);
   }
 
   onClear() {
-    this.onClearFormEvent.emit();
+    this.imagePreview = null
+    this.onClearFormEvent.emit(this.imagePreview);
   }
 
   onClearFileSelect() {

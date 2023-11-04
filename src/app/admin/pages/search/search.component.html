@@ -1,7 +1,7 @@
 <app-search-form
   [searchForm]="searchForm"
-  (onSaveEvent)="onSave()"
-  (onClearFormEvent)="onClear()"
+  (onSaveEvent)="onSave($event)"
+  (onClearFormEvent)="onClear($event)"
   (onClearFileSeleteEvent)="onClearFileSelect()"
   (onSeleteFileEvent)="getFile($event)"
 ></app-search-form>

@@ -71,7 +71,7 @@ export class SearchComponent implements OnInit {
     this.file = fileEvent
   }
 
-  onSave() {
+  onSave(event: any) {
     const payload = this.searchForm.getRawValue();
 
     const formData = new FormData();
@@ -82,8 +82,10 @@ export class SearchComponent implements OnInit {
     
     this.service.saveProducts(formData).subscribe(res => {
       this.getQueryTable()
-      this.imagePreview = null
     });
+    
+    this.searchForm.reset()
+    this.imagePreview = event
   }
 
 
@@ -91,9 +93,9 @@ export class SearchComponent implements OnInit {
     console.log(id);
   }
 
-  onClear() {
+  onClear(event: any) {
     this.searchForm.reset()
-    this.imagePreview = null
+    this.imagePreview = event
   }
 
   onClearFileSelect() {
