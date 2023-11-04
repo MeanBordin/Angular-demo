@@ -22,7 +22,6 @@ export class SearchFormComponent {
   }
 
   onClear() {
-    this.imagePreview = null
     this.onClearFormEvent.emit();
   }
 

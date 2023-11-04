@@ -54,7 +54,7 @@
           <tr>
              <td class="text-center">
               <i class="pi pi-trash cursor-pointer" style="color: red; margin-right: 15px; font-size: 18px;" (click)="onDeleteInRow(products.id)"></i>
-              <i class="pi pi-file-edit cursor-pointer" style="color: slateblue; font-size: 18px;" ></i>
+              <i class="pi pi-file-edit cursor-pointer" style="color: slateblue; font-size: 18px;" (click)="editProduct(products.id)" ></i>
              </td>
               <td>{{ products.id }}</td>
               <td>

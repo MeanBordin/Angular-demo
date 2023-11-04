@@ -32,6 +32,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { PaginatorModule } from 'primeng/paginator';
 import { AdminService } from './services/admin.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SaveFormComponent } from './components/save-form/save-form.component';
+import { SaveComponent } from './pages/save/save.component';
 
 
 
@@ -40,7 +42,9 @@ import { HttpClientModule } from '@angular/common/http';
     AdminComponent,
     SearchComponent,
     SearchFormComponent,
-    SearchTableComponent
+    SearchTableComponent,
+    SaveFormComponent,
+    SaveComponent
   ],
   imports: [
     CommonModule,

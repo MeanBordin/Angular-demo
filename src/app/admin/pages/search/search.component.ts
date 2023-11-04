@@ -81,9 +81,14 @@ export class SearchComponent implements OnInit {
     formData.append('image', this.file)
     
     this.service.saveProducts(formData).subscribe(res => {
-      console.log(res);
       this.getQueryTable()
+      this.imagePreview = null
     });
+  }
+
+
+  editProduct(id: any)  {
+    console.log(id);
   }
 
   onClear() {
