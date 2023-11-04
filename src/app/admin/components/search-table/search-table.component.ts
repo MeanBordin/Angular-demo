@@ -12,7 +12,7 @@ export class SearchTableComponent {
   @Output() deleteInRowEvent = new EventEmitter();
 
   constructor() {
-    
+    // TODO
   }
 
   onDeleteInRow(id: any) {

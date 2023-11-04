@@ -16,6 +16,11 @@ export class AdminService {
   }
 
 
+  saveProducts(product: any): Observable<any> {
+    return this.http.post<any>(`${environment.baseUrl}addProduct`, product);
+  }
+
+
   deleteProduct(id: number): Observable<any> {
     return this.http.delete<any>(`${environment.baseUrl}deleteProductPms/${id}`)
   }
@@ -25,6 +30,6 @@ export class AdminService {
     if (image) {
       return `${environment.baseUrl}images/${image}`
     }
-    return 'src/assets/images/no_photo.jpg'
+    return 'assets/images/no_photo.jpg'
   }
 }

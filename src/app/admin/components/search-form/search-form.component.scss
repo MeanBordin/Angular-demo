@@ -7,6 +7,7 @@ input[type="file"]::file-selector-button {
   font-weight: bold;
   cursor: pointer;
   color: #828282;
+  display: none;
 }
 
 input[type="file"]::file-selector-button:hover {
@@ -14,16 +15,21 @@ input[type="file"]::file-selector-button:hover {
   color: white;
 }
 
-.btn-clear-file {
+.btn-file {
   border-radius: 6px;
   border: none;
-  padding: 8px;
-  width: 50px;
+  padding: 8px ;
+  width: 100px;
   margin: 5px 5px 0 5px;
-  background: rgb(255, 177, 177);
+  background: #66baff;
 }
 
 
-.btn-clear-file:hover {
+.btn-file:hover {
   background: rgb(255, 114, 114);
+}
+
+#previewImage {
+  width: 180px;
+  height: 140px;
 }

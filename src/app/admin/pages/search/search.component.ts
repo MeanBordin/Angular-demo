@@ -12,6 +12,8 @@ import Swal from 'sweetalert2'
 export class SearchComponent implements OnInit {
   searchForm!: FormGroup
   cols = TABLE_SEARCH
+  imagePreview!: any 
+  file: any
 
   products: any[] = []
 
@@ -65,13 +67,28 @@ export class SearchComponent implements OnInit {
     return day + '/' + month + '/' + year;
   }
 
+  getFile(fileEvent: any) {
+    this.file = fileEvent
+  }
+
   onSave() {
-    const payload = this.searchForm.getRawValue()
-    console.log(payload);
+    const payload = this.searchForm.getRawValue();
+
+    const formData = new FormData();
+    formData.append('name', payload.name)
+    formData.append('stock', payload.stock)
+    formData.append('price', payload.price)
+    formData.append('image', this.file)
+    
+    this.service.saveProducts(formData).subscribe(res => {
+      console.log(res);
+      this.getQueryTable()
+    });
   }
 
   onClear() {
     this.searchForm.reset()
+    this.imagePreview = null
   }
 
   onClearFileSelect() {
@@ -79,8 +96,26 @@ export class SearchComponent implements OnInit {
   }
 
   onDeleteInRow(id: any) {
-    this.service.deleteProduct(id).subscribe(() => {
-      this.getQueryTable()
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'ตกลง',
+      confirmButtonColor: '#FF7272',
+      cancelButtonText: 'ยกเลิก',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+          )
+        this.service.deleteProduct(id).subscribe(() => {
+          this.getQueryTable()
+        })
+      }
     })
+
   }
 }
