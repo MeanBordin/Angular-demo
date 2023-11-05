@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ProductRespone } from '../models/products.model';
 import { environment } from 'src/environments/environment';
 
@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AdminService {
+  productId$ = new BehaviorSubject<any>(null)
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +16,9 @@ export class AdminService {
     return this.http.get<ProductRespone[]>(`${environment.baseUrl}getProducts`)
   }
 
+  getProductsForPrm(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.baseUrl}getProductsForPrm/${id}`)
+  }
 
   saveProducts(product: any): Observable<any> {
     return this.http.post<any>(`${environment.baseUrl}addProduct`, product);

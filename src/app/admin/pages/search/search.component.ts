@@ -2,35 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TABLE_SEARCH } from '../../constants/table-option';
 import { AdminService } from '../../services/admin.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  searchForm!: FormGroup
-  cols = TABLE_SEARCH
-  imagePreview!: any 
-  file: any
+  searchForm!: FormGroup;
+  cols = TABLE_SEARCH;
+  imagePreview!: any;
+  file: any;
 
-  products: any[] = []
+  products: any[] = [];
 
-  date: any
-  day: any
-  month: any
-  year: any
-  newDate: any
-  updateAt: any[] = []
-  createAt: any[] = []
+  date: any;
+  day: any;
+  month: any;
+  year: any;
+  newDate: any;
+  updateAt: any[] = [];
+  createAt: any[] = [];
 
-  constructor(private fb: FormBuilder, private service: AdminService) {
+  constructor(
+    private fb: FormBuilder,
+    private service: AdminService,
+    private location: Location,
+    private router: Router,
+    private activateRoute: ActivatedRoute
+  ) {
     this.inintForm();
   }
 
   ngOnInit(): void {
-    this.getQueryTable()
+    this.getQueryTable();
   }
 
   getQueryTable() {
@@ -40,7 +48,7 @@ export class SearchComponent implements OnInit {
         return item;
       });
       this.getItemDate();
-    })
+    });
   }
 
   inintForm() {
@@ -48,7 +56,7 @@ export class SearchComponent implements OnInit {
       name: [null],
       stock: [null],
       price: [null],
-      image: [null]
+      image: [null],
     });
   }
 
@@ -68,34 +76,34 @@ export class SearchComponent implements OnInit {
   }
 
   getFile(fileEvent: any) {
-    this.file = fileEvent
+    this.file = fileEvent;
   }
 
   onSave(event: any) {
     const payload = this.searchForm.getRawValue();
 
     const formData = new FormData();
-    formData.append('name', payload.name)
-    formData.append('stock', payload.stock)
-    formData.append('price', payload.price)
-    formData.append('image', this.file)
-    
-    this.service.saveProducts(formData).subscribe(res => {
-      this.getQueryTable()
+    formData.append('name', payload.name);
+    formData.append('stock', payload.stock);
+    formData.append('price', payload.price);
+    formData.append('image', this.file);
+
+    this.service.saveProducts(formData).subscribe((res) => {
+      this.getQueryTable();
     });
-    
-    this.searchForm.reset()
-    this.imagePreview = event
+
+    this.searchForm.reset();
+    this.imagePreview = event;
   }
 
-
-  editProduct(id: any)  {
-    console.log(id);
+  editProduct(id: any) {
+    this.service.productId$.next(id) 
+    this.router.navigate(['admin/save'])
   }
 
   onClear(event: any) {
-    this.searchForm.reset()
-    this.imagePreview = event
+    this.searchForm.reset();
+    this.imagePreview = event;
   }
 
   onClearFileSelect() {
@@ -113,16 +121,11 @@ export class SearchComponent implements OnInit {
       cancelButtonText: 'ยกเลิก',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-          )
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
         this.service.deleteProduct(id).subscribe(() => {
-          this.getQueryTable()
-        })
+          this.getQueryTable();
+        });
       }
-    })
-
+    });
   }
 }

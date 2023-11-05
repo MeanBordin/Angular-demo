@@ -1,1 +1,65 @@
-<p>save-form works!</p>
+<form [formGroup]="saveForm" class="m-8">
+  <div class="flex justify-content-center mt-5">
+    <div class="grid">
+      <div class="col-12 mb-3">
+        <h1  class="mb-5">EDIT DATA</h1>
+        <span class="p-float-label">
+          <input pInputText id="name" formControlName="name" />
+          <label htmlFor="name">Productname</label>
+        </span>
+      </div>
+      <div class="col-6 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="stock" formControlName="stock" />
+          <label htmlFor="stock">Stock</label>
+        </span>
+      </div>
+      <div class="col-6 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="price" formControlName="price" />
+          <label htmlFor="price">Price</label>
+        </span>
+      </div>
+      <div class="col-6 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="createdAt" formControlName="createdAt" />
+          <label htmlFor="createdAt">created at</label>
+        </span>
+      </div>
+      <div class="col-6 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="updatedAt" formControlName="updatedAt" />
+          <label htmlFor="updatedAt">updated at</label>
+        </span>
+      </div>
+      <div class="col-12 mb-3">
+        <span class="p-float-label">
+          <button class="btn-file" type="button" (click)="fileInput.click()">
+            select image
+          </button>
+          <input
+            #fileInput
+            type="file"
+            id="image"
+            (change)="onFileSelected($event)"
+            accept=".png, .jpg, .jpeg"
+            formControlName="image"
+          />
+        </span>
+      </div>
+      <div class="col-12 mb-3" *ngIf="imagePreview">
+        <img [src]="imagePreview" alt="previewImage" id="previewImage" />
+      </div>
+      <div class="col-12 mt-3">
+        <button
+          pButton
+          pRipple
+          label="Submit"
+          class="p-button-success"
+          (click)="onSave()"
+          style="width: 100%"
+        ></button>
+      </div>
+    </div>
+  </div>
+</form>
