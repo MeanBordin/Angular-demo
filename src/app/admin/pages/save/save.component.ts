@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { TABLE_SEARCH } from '../../constants/table-option';
 import { AdminService } from '../../services/admin.service';
 
 @Component({
@@ -78,7 +77,6 @@ export class SaveComponent implements OnInit {
 
   onUpdate() {
     const payload = this.saveForm.getRawValue();
-
     this.id = this.service.productId$.value
 
     const formData = new FormData();
@@ -107,10 +105,7 @@ export class SaveComponent implements OnInit {
         })
       }
     });
-
-    
   }
-
 
   onBackPage(){
     this.router.navigate(['admin'])
