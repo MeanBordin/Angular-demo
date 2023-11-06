@@ -31,6 +31,9 @@ export class SaveComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.service.productId$.value == null) {
+      this.router.navigate(['admin'])
+    }
     this.onDisable()
   }
 
