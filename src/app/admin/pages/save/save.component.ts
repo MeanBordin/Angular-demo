@@ -15,8 +15,9 @@ export class SaveComponent implements OnInit {
   imagePreview!: any;
   file: any;
 
+  id: any
 
-  dataWithoutImage!: any
+  setData!: any
 
   products: any[] = [];
 
@@ -35,12 +36,12 @@ export class SaveComponent implements OnInit {
   }
 
   getQueryTable() {
-    const id = this.service.productId$.value
+    this.id = this.service.productId$.value
 
-    this.service.getProductsForPrm(id).subscribe((res: any) => {
+    this.service.getProductsForPrm(this.id).subscribe((res: any) => {
       this.imagePreview = this.service.getProductImage(res['image'])
       
-      this.dataWithoutImage = {
+      this.setData = {
         id: res.id,
         name: res.name,
         stock: res.stock,
@@ -50,7 +51,7 @@ export class SaveComponent implements OnInit {
       };
 
       // patch ค่าที่ไม่รวมรูปภาพ
-      this.saveForm.patchValue(this.dataWithoutImage);
+      this.saveForm.patchValue(this.setData);
     });
   }
 
@@ -75,9 +76,44 @@ export class SaveComponent implements OnInit {
   }
 
 
-  onSave() {
+  onUpdate() {
+    const payload = this.saveForm.getRawValue();
 
+    this.id = this.service.productId$.value
+
+    const formData = new FormData();
+    formData.append('name', payload.name);
+    formData.append('stock', payload.stock);
+    formData.append('price', payload.price);
+    formData.append('image', this.file);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, edit it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Edit Success!",
+          text: "Your data has been updated.",
+          icon: "success"
+        });
+        this.service.updateProductPms(this.id, formData).subscribe((res: any) => {
+          this.router.navigate(['admin'])
+        })
+      }
+    });
+
+    
   }
 
+
+  onBackPage(){
+    this.router.navigate(['admin'])
+  }
 
 }

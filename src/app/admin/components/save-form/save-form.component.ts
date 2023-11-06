@@ -16,6 +16,7 @@ export class SaveFormComponent {
   @Output() onClearFormEvent = new EventEmitter();
   @Output() onClearFileSeleteEvent = new EventEmitter();
   @Output() onSeleteFileEvent = new EventEmitter();
+  @Output() onBackPageEvent = new EventEmitter();
 
   onSave(){
     this.onSaveEvent.emit();
@@ -28,6 +29,10 @@ export class SaveFormComponent {
 
   onClearFileSelect() {
     this.onClearFileSeleteEvent.emit()
+  }
+
+  onBackPage() {
+    this.onBackPageEvent.emit()
   }
 
   onFileSelected(event: any) {

@@ -1,1 +1,7 @@
-<app-save-form [saveForm]="saveForm" [imagePreview]="imagePreview"></app-save-form>
+<app-save-form
+  [saveForm]="saveForm"
+  [imagePreview]="imagePreview"
+  (onBackPageEvent)="onBackPage()"
+  (onSaveEvent)="onUpdate()"
+  (onSeleteFileEvent)="getFile($event)"
+></app-save-form>

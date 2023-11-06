@@ -23,6 +23,10 @@ export class AdminService {
   saveProducts(product: any): Observable<any> {
     return this.http.post<any>(`${environment.baseUrl}addProduct`, product);
   }
+  
+  updateProductPms(id: number, product: any): Observable<any> {
+    return this.http.put<any>(`${environment.baseUrl}updateProductPms/${id}`, product);
+  }
 
 
   deleteProduct(id: number): Observable<any> {
